@@ -315,6 +315,20 @@
    "bold": null,
    "align": "justify",
    "notes": "不设 NameFarEast（TNR 非东亚字体，COM 会拒绝）"
+  },
+  {
+   "id": "caption_en_left",
+   "label": "英文稿表题（9pt 加粗左对齐，作者偏好）",
+   "size_pt": 9,
+   "ascii": "Times New Roman",
+   "bold": true,
+   "align": "left",
+   "clear_first_line_indent": true
+  },
+  {
+   "id": "indent_only",
+   "label": "仅首行缩进2字符（不改字体字号，用于摘要/关键词等已定格式元素）",
+   "first_line_indent_chars": 2
   }
  ]
 }
