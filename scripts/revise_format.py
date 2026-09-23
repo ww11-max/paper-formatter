@@ -59,6 +59,28 @@ def apply_element(rng, e):
         r1 = _set(rng.ParagraphFormat, "CharacterUnitFirstLineIndent", 0)
         _set(rng.ParagraphFormat, "FirstLineIndent", 0)
         changed.append("顶格(清除首行缩进)" if r1 is True else str(r1))
+    if e.get("space_before_pt") is not None:
+        pf = rng.ParagraphFormat
+        try:
+            pf.SpaceBeforeAuto = False
+        except Exception:
+            pass
+        pf.SpaceBefore = e["space_before_pt"]
+        changed.append(f"段前={e['space_before_pt']}pt")
+    if e.get("space_after_pt") is not None:
+        pf = rng.ParagraphFormat
+        try:
+            pf.SpaceAfterAuto = False
+        except Exception:
+            pass
+        pf.SpaceAfter = e["space_after_pt"]
+        changed.append(f"段后={e['space_after_pt']}pt")
+    if e.get("line_spacing_rule") == "single":
+        rng.ParagraphFormat.LineSpacingRule = 0
+        changed.append("行距=单倍")
+    if e.get("line_spacing_rule") == "onehalf":
+        rng.ParagraphFormat.LineSpacingRule = 1
+        changed.append("行距=1.5倍")
     if e.get("first_line_indent_chars"):
         r = _set(rng.ParagraphFormat, "CharacterUnitFirstLineIndent", e["first_line_indent_chars"])
         changed.append(f"首行缩进{e['first_line_indent_chars']}字符" if r is True else str(r))
