@@ -269,6 +269,15 @@
    "first_line_indent_chars": 2
   },
   {
+   "id": "body_noindent",
+   "label": "正文内容（清除首行缩进，统一到块状段落风格）",
+   "size_pt": 10.5,
+   "east_asian": "宋体",
+   "ascii": "Times New Roman",
+   "bold": null,
+   "clear_first_line_indent": true
+  },
+  {
    "id": "heading_en_chapter",
    "label": "英文稿章标题（黑体→TNR加粗替代）",
    "size_pt": 12,
