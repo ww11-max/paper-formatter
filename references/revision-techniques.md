@@ -41,6 +41,12 @@
 
 ## 3. 环境与运行要点
 
+- **Word Find 的 `*` 在 MatchWildcards=False 时仍是"任意字符序列"通配符**！含 `*` 的查找串
+  （如 `*** p<0.01`）会失控匹配并可能错误替换。含星号文本的查找/替换必须：① 改用**段落定位 +
+  Selection.TypeText**（最可靠，可绕过 OMML 边界限制）；② 或 XML 直改（注意 run 边界，目标文本可能被
+  标签切分，live() 拼接顺序≠XML 连续串）。
+- 修订交织文档上 Find.Execute 可能"返回 True 但替换落在错误位置/不落盘"——每次替换后必须用 XML 复验
+  （搜替换后的新文本串），不可信返回值。
 - **文件不能同时被 Word/WPS 打开**，否则 `Documents.Open` 抛错（脚本会提示）。执行前确认关闭。
 - 脚本用 `DispatchEx("Word.Application")` 新开独立 Word 实例（`Visible=False, DisplayAlerts=0`），
   不干扰用户已开的 Word 窗口；务必 try/finally `word.Quit()` 防止僵尸 WINWORD 进程。
